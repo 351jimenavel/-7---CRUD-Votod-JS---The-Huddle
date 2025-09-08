@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ranking Dinamico</title>
+</head>
+<body>
+    <h2>Lista de temas</h2>
+    <ul id="temas"></ul>
+    <script>
+        ///// Que hace este archivo - ANHADIR DINAMISMO AL 2DO EJERICIO
+        // Arranca la lista con Minimax, DFS y BFS (todos con 0 votos).
+        // Cada vez que hacés clic en Votar, el contador sube.
+        // El array se vuelve a ordenar por votos y la lista se repinta → el más votado sube automáticamente.
+
+
+        // Definir un array de objetos con titulo y votos
+        let temas = [
+        {titulo: "Minimax", votos: 0},
+        {titulo: "DFS", votos: 0},
+        {titulo: "BFS", votos: 0}
+        ]
+
+        // 1. Función para pintar la lista en el <ul>
+        // funcion renderizarLista():
+        function renderizarLista(){
+            //     - obtener referencia al elemento <ul> (ej: por id)
+            let lista = document.getElementById('temas');
+
+            //     - limpiar el contenido actual del <ul> (vaciarlo)
+            lista.innerHTML = '';
+            //     - recorrer el array temas (ya ordenado):
+            temas.sort((a, b) => b.votos - a.votos);
+            //         para cada tema:
+            for (let i = 0; i < temas.length; i++){
+                let tema = temas[i];
+                //   - crear un <li> que muestre el titulo
+                const nuevoLi = document.createElement("li");
+                nuevoLi.textContent = `${tema.titulo} - Votos: ${tema.votos}`;
+                //   - crear un <button> que muestre el número de votos
+                const botton = document.createElement("button");
+                //   - añadir evento al botón:
+                botton.textContent = "Votar";
+                //        al hacer clic:
+                botton.addEventListener("click", function() {
+                        //    - aumentar votos del tema en 1
+                        tema.votos += 1;
+                        //    - volver a llamar a renderizarLista() para repintar
+                        renderizarLista();
+                    });
+                
+                //   - agregar el <li> (con su botón) al <ul>
+                nuevoLi.appendChild(botton);
+
+                // 4. Agregar el nuevo LI a la lista UL
+                lista.appendChild(nuevoLi);
+                    
+            }
+        }
+
+        
+        // 2. Llamar a renderizarLista() al cargar la página
+        renderizarLista();
+
+    </script>
+</body>
+</html>

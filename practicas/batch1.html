@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1RA TANDA DE EJERCICIOS: Manipular arrays y objetos
+
+        // 1. Crea un array de objetos temas con titulo y votos.
+        let temas = [
+            {
+                titulo:"Minimax",
+                votos: 2
+            },
+            {
+                titulo:"DFS",
+                votos: 10
+            },
+            {
+                titulo:"BFS",
+                votos: 8
+            },
+            {
+                titulo:"A*",
+                votos: 10
+            }
+        ];
+
+        // 2. Agrega un nuevo tema. 
+        //// Unshift anhade un objeto al inicio del array
+        let tema1 = {
+            titulo:"Backtracking",
+            votos:7
+        };
+        temas.push(tema1);
+        
+        //// Push anhade un objeto en la ultima posicion
+        let tema2 = {
+            titulo:"Djisktra",
+            votos:2
+        };
+        temas.unshift(tema2);
+        
+        // 3. Edita el título de un tema.
+        temas[0].titulo = "Ok"; // este es mas comun en JS
+        // temas[0]["titulo"] = "Ok";
+        console.log(temas)
+        
+        // 4. Borra un tema (filter).
+        let mayorVotos = temas.filter(tema => tema.votos !== 10);
+        console.log(mayorVotos)
+        
+        let menorVotos = temas.filter(tema => tema.votos !== 2);
+        console.log(menorVotos)
+        
+        // 5. Ordena los temas por votos.
+        let temasOrdenados = temas.sort((t1,t2) => (t2.votos - t1.votos));
+        console.log(temasOrdenados)
+
+    </script>
+</body>
+</html>

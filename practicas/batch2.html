@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>
+        Lista de temas
+    </h2>
+    <ul id="temas">
+        <li>Minimax</li>
+        <p>Votar
+            <button id="boton1">0</button>
+        </p>
+        
+        <li>BFS</li>
+        <p>Votar
+            <button id="boton2">0</button>
+        </p>
+        <li>DFS</li>
+        <p>Votar
+            <button id="boton3">0</button>
+        </p>
+    </ul>
+    <script>
+
+        // 2DA TANDA DE EJERCICIOS: Eventos y DOM
+
+        // Muestra en pantalla la lista de temas como <ul>.
+
+        // Cada tema debe tener un botón “Votar”.
+
+        // Al hacer clic, sube en 1 el voto y actualiza el texto en pantalla.
+        /// (Sin backend todavía, esto simula lo que luego hará tu app real).
+        let temas = [
+            {
+                titulo:"Minimax",
+                votos: 0
+            },
+            {
+                titulo:"DFS",
+                votos: 0
+            },
+            {
+                titulo:"BFS",
+                votos: 0
+            }
+        ];
+        
+        const boton1 = document.getElementById('boton1');
+
+        boton1.addEventListener('click', function() {
+            temas[0].votos += 1;
+            
+            boton1.textContent = temas[0].votos;
+        }
+    )
+        const boton2 = document.getElementById('boton2');
+
+        boton2.addEventListener('click', function() {
+            temas[1].votos += 1;
+            
+            boton2.textContent = temas[1].votos;
+        }
+    )
+        const boton3 = document.getElementById('boton3');
+
+        boton3.addEventListener('click', function() {
+            temas[2].votos += 1;
+            
+            boton3.textContent = temas[2].votos;
+        }
+    )
+
+    console.log(temas)
+    let temasOrdenados = temas.sort((t1,t2) => (t2.votos - t1.votos));
+    console.log(temasOrdenados)
+
+    </script>
+</body>
+</html>
