@@ -1,0 +1,24 @@
+{
+  "name": "the-huddle---challenge-7",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/351jimenavel/-7---CRUD-Votod-JS---The-Huddle.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/351jimenavel/-7---CRUD-Votod-JS---The-Huddle/issues"
+  },
+  "homepage": "https://github.com/351jimenavel/-7---CRUD-Votod-JS---The-Huddle#readme",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^5.1.0"
+  }
+}
