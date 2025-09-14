@@ -22,15 +22,16 @@ router.get('/nuevo', (req, res) => {
 
 // Ruta POST /temas que crea el tema (votos=0) y redirige a /temas.
 router.post('/', (req, res) => {
-    const datos = req.body;     // datos del formulario
+    const { titulo } = req.body;     // datos del formulario
     // Llama a crearTema
-    const resultado = temasModel.crearTema(datos.titulo);
+    const resultado = temasModel.crearTema(titulo);
 
     if (resultado.ok){
         res.redirect('/temas') // Redirige a la lista si todo bien
     } else{
         // Si hay error, ese nvia la informacion de vuelta al frontend
-        res.render('temas/form', { error: resultado.error, valoresPrevios: { titulo: datos.titulo }});
+        //res.render('temas/form', { error: resultado.error, valoresPrevios: { titulo: datos.titulo }});
+        return res.status(400).render('temas/form', { error: resultado.error, valoresPrevios: { titulo } });
     }
 })
 
@@ -38,11 +39,12 @@ router.post('/:id/votar', (req, res) => {
     const id = Number(req.params.id);
     const resultado = temasModel.votarTema(id);
     if (resultado.ok){
-        return res.redirect('/temas')
+        //return res.redirect('/temas')
+        return res.json({ ok: true, votos: resultado.votos });   // el modelo debe devolver el total actualizado en resultado.votos
     }
       // En error volvés a la lista con un mensaje simple
-    const lista = temasModel.listarTemasOrdenados();
-    return res.status(400).render('temas/lista', { temas: lista, error: resultado.error });
+    //const lista = temasModel.listarTemasOrdenados();
+    return res.status(404).json({ ok: false, error: resultado.error || 'Tema no encontrado' });
 })
 
 module.exports = router;
