@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Nuevo tema</title>
+</head>
+<body>
+    <h1>Crear un nuevo tema</h1>
+
+    <% if (error) { %>
+        <p style="color:red"><%= error %></p>
+    <% } %>
+
+    <form method="POST" action="/temas">
+        <input 
+            type="text" 
+            name="titulo" 
+            value="<%= valoresPrevios.titulo || '' %>" 
+            placeholder="Escribe un título..."
+        >
+        <button type="submit">Crear</button>
+    </form>
+
+    <p><a href="/temas">Volver a la lista</a></p>
+</body>
+</html>
